@@ -1,5 +1,6 @@
 - hosts: localhost
   become: true
   tasks:
-  - name: Install pidgin
-    apt: name=pidgin
+    - name: Install packages
+      apt:
+        name: nemo,mplayer,vlc
