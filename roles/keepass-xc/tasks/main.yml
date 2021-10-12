@@ -1,0 +1,10 @@
+---
+- name: Install keepass
+  apt:
+    name: mono-complete, keepassxc
+    state: present
+  become: true
+
+#- name: Copy keepass from firefox to plugins
+#  shell: sudo cp ~/.mozilla/firefox/*.default-*/extensions/keefox@chris.tomlinson/deps/KeePassRPC.plgx /usr/lib/keepass2/plugins
+#  become: true
