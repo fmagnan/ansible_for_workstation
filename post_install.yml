@@ -1,0 +1,57 @@
+- hosts: localhost
+  become: true
+  tasks:
+    - name: Installing packages
+      become: yes
+      apt:
+        name: "{{ packages }}"
+        state: present
+      vars:
+        packages:
+          - audacious
+          - mplayer
+          - nemo
+          - openjdk-17-jdk
+          - snap
+          - tlp
+          - tlp-rdw
+          - ubuntu-restricted-extras
+          - vlc
+          - whois
+
+    - name: Removing unwanted packages
+      become: yes
+      apt:
+        name: "{{ packages }}"
+        state: absent
+      vars:
+        packages:
+          - abiword
+          - apport
+          - apport-gtk
+          - catfish
+          - gigolo
+          - gnome-mines
+          - gnome-sudoku
+          - gnumeric
+          - leafpad
+          - lxterminal
+          - midori
+          - mousepad
+          - nano
+          - parole
+          - ristretto
+          - sylpheed
+          - thunar
+          - transmission
+          - transmission-gtk
+          - transmission-common
+          - wine
+          - xfburn
+          - xfce4-notes
+          - xfce4-notes-plugin
+          - xpad
+
+    - name: Enabling tlp to save battery life
+      become: yes
+      shell: /usr/bin/systemctl enable tlp
